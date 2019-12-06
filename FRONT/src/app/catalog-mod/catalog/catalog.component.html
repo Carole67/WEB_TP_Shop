@@ -1,0 +1,36 @@
+<main>
+    <div class="jumbotron vertical-center">
+
+        <div class="container">
+            <div class="card">
+                <!--Titre-->
+                <h2 class="text-center font-weight-bold">Catalogue</h2>
+                <div class="card-body">
+                    <app-product-filter (notifyCategory)="updateCategory($event)" (notifyFilter)="updateFilter($event)">
+                    </app-product-filter>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let col of columns">
+                                        {{col}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let p of products | async; index as i ">
+                                    <th scope="row ">{{ i + 1 }}</th>
+                                    <td>{{p.name}}</td>
+                                    <td>{{p.material}}</td>
+                                    <td>{{p.price}} €</td>
+                                    <td><button type="button" class="btn btn-primary" (click)="onClick (p)">+</button></td>
+                                    <td><button type="button" class="btn btn-primary" (click)="onNavigate (p)">Nav</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
